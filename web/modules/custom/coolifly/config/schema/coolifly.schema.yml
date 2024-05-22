@@ -1,0 +1,7 @@
+action.configuration.coolifly_run_terminal_command:
+  type: mapping
+  label: 'Configuration for "Run Terminal Command" action'
+  mapping:
+    example:
+      type: string
+      label: Example
