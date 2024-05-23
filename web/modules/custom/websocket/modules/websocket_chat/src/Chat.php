@@ -40,8 +40,8 @@ class Chat extends DrupalAwareService implements MessageComponentInterface {
 
     // Check permission and close connection if not allowed.
     // if (!$this->access($user)) {
-    //  $conn->close();
-    //  return;
+    // $conn->close();
+    // return;
     // }
     $this->clients->attach($conn);
     echo "New connection {$conn->resourceId}\n";

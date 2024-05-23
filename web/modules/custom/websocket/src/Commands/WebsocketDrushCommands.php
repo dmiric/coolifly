@@ -51,7 +51,8 @@ class WebsocketDrushCommands extends DrushCommands {
       'no-ssl' => FALSE,
       'no-reverse-proxy' => FALSE,
       'just-print' => FALSE,
-    ]) {
+      ]
+    ) {
 
     // Build new kernel on base of Drush's one to ensure long connectivity to
     // database during all the time.

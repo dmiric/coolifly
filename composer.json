@@ -19,6 +19,7 @@
         }
     },
     "require": {
+        "cboden/ratchet": "^0.4.4",
         "composer/installers": "^2.0",
         "cweagans/composer-patches": "^1.7",
         "drupal/admin_toolbar": "^3.4",
@@ -35,8 +36,8 @@
         "drupal/eca": "^2.0@alpha",
         "drupal/examples": "^4.0",
         "drupal/stage_file_proxy": "^2.1",
-        "drupal/websocket": "2.x-dev@dev",
         "oomphinc/composer-installers-extender": "^2.0",
+        "symfony/process": "^6.4",
         "szeidler/composer-patches-cli": "^1.0"
     },
     "conflict": {
