@@ -1,0 +1,7 @@
+websocket.connection_settings_controller:
+  path: '/ws/settings/{serviceName}'
+  defaults:
+    _controller: '\Drupal\websocket\Controller\ConnectionSettingsController::settings'
+  requirements:
+    _permission: 'access content'
+    _format: 'json'

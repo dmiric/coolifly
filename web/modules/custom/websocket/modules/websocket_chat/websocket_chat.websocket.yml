@@ -1,0 +1,5 @@
+# Websocket service plugin definitions.
+chat:
+  class: Drupal\websocket_chat\Chat
+  label: 'Websocket chat'
+  enabled: true

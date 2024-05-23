@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace Drupal\Tests\menu_link_content\Kernel;
 
 use Drupal\Core\Menu\MenuTreeParameters;
@@ -146,7 +148,7 @@ class MenuLinksTest extends KernelTestBase {
     $link = MenuLinkContent::create($options);
     $link->save();
     // Make sure the changed timestamp is set.
-    $this->assertEquals(REQUEST_TIME, $link->getChangedTime(), 'Creating a menu link sets the "changed" timestamp.');
+    $this->assertGreaterThanOrEqual(\Drupal::time()->getRequestTime(), $link->getChangedTime(), 'Creating a menu link sets the "changed" timestamp.');
     $options = [
       'title' => 'Test Link',
     ];
@@ -154,7 +156,7 @@ class MenuLinksTest extends KernelTestBase {
     $link->changed->value = 0;
     $link->save();
     // Make sure the changed timestamp is updated.
-    $this->assertEquals(REQUEST_TIME, $link->getChangedTime(), 'Changing a menu link sets "changed" timestamp.');
+    $this->assertGreaterThanOrEqual(\Drupal::time()->getRequestTime(), $link->getChangedTime(), 'Changing a menu link sets "changed" timestamp.');
   }
 
   /**

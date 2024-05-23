@@ -1,0 +1,5 @@
+comments:
+  js:
+    js/comments.js: {}
+  dependencies:
+    - websocket/core

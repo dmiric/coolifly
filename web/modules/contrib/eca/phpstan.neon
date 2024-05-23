@@ -1,0 +1,17 @@
+parameters:
+  level: 6
+  checkMissingIterableValueType: false
+  checkGenericClassInNonGenericObjectType: false
+  ignoreErrors:
+    - '#Plugin definitions cannot be altered.#'
+  excludePaths:
+    - '*/tests/*.php'
+  stubFiles:
+    - './tests/phpstan/stubs/CacheableDependencyInterface.stub'
+    - './tests/phpstan/stubs/CacheBackendInterface.stub'
+    - './tests/phpstan/stubs/CachedDiscoveryInterface.stub'
+    - './tests/phpstan/stubs/DefaultPluginManager.stub'
+    - './tests/phpstan/stubs/FormStateInterface.stub'
+    - './tests/phpstan/stubs/Map.stub'
+    - './tests/phpstan/stubs/TokenInterface.stub'
+    - './tests/phpstan/stubs/ViewsPluginInterface.stub'

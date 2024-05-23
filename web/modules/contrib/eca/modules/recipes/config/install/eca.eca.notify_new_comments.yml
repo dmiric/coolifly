@@ -1,0 +1,38 @@
+langcode: en
+status: true
+dependencies:
+  module:
+    - eca_content
+id: notify_new_comments
+modeller: bpmn_io
+label: 'Notify: New Comment'
+version: 0.9.0
+weight: 0
+events:
+  Event_0i3cw7g:
+    plugin: 'content_entity:insert'
+    label: 'New comment created'
+    configuration:
+      type: 'comment _all'
+    successors:
+      -
+        id: Activity_1l3vura
+        condition: ''
+conditions: {  }
+gateways: {  }
+actions:
+  Activity_1l3vura:
+    plugin: action_send_email_action
+    label: 'Send email'
+    configuration:
+      recipient: '[site:mail]'
+      subject: 'New comment: [entity:entity:title]'
+      message: |-
+        A new comment was posted to "[entity:entity:title]":
+
+        - Title: [entity:title]
+        - Author: [entity:author:name] from [entity:author:mail]
+
+        Review: [entity:entity:url]
+      replace_tokens: true
+    successors: {  }

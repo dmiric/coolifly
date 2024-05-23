@@ -1,0 +1,5 @@
+name: Websocket
+type: module
+description: 'Real-time Drupal over Websockets'
+core_version_requirement: ^8 || ^9 || ^10
+package: Websocket

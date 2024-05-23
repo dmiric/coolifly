@@ -16,6 +16,12 @@ disable_settings_management: true
 web_environment: []
 corepack_enable: false
 
+web_extra_exposed_ports:
+  - name: ratchet
+    container_port: 3000
+    http_port: 3000
+    https_port: 3001
+
 # Key features of DDEV's config.yaml:
 
 # name: <projectname> # Name of the project, automatically provides

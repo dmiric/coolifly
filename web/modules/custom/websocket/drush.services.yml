@@ -1,0 +1,5 @@
+services:
+  websocket.commands:
+    class: \Drupal\websocket\Commands\WebsocketDrushCommands
+    tags:
+      - { name: drush.command }

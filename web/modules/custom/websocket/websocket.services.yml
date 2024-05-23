@@ -1,0 +1,5 @@
+services:
+  # Websocket service manager
+  plugin.manager.websocket:
+    class: Drupal\websocket\WebsocketServiceManager
+    arguments: ['@module_handler']

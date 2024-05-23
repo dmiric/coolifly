@@ -1,0 +1,8 @@
+core:
+  js:
+    js/websocket.js: {}
+  dependencies:
+    - core/jquery
+    - core/drupal
+    - core/drupal.ajax
+    - core/drupalSettings

@@ -1,0 +1,5 @@
+# Websocket service plugin definitions.
+comments:
+  class: Drupal\websocket_comments\RealtimeComments
+  label: 'Websocket comments'
+  enabled: true

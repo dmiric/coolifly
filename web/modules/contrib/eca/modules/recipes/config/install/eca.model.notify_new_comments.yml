@@ -1,0 +1,72 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - eca.eca.notify_new_comments
+id: notify_new_comments
+label: 'Notify: New Comment'
+tags:
+  - untagged
+documentation: ''
+filename: ''
+modeldata: |
+  <?xml version="1.0" encoding="UTF-8"?>
+  <bpmn2:definitions xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:bpmn2="http://www.omg.org/spec/BPMN/20100524/MODEL" xmlns:bpmndi="http://www.omg.org/spec/BPMN/20100524/DI" xmlns:dc="http://www.omg.org/spec/DD/20100524/DC" xmlns:camunda="http://camunda.org/schema/1.0/bpmn" xmlns:di="http://www.omg.org/spec/DD/20100524/DI" xmlns:qa="http://some-company/schema/bpmn/qa" id="sample-diagram" targetNamespace="http://bpmn.io/schema/bpmn" xsi:schemaLocation="http://www.omg.org/spec/BPMN/20100524/MODEL BPMN20.xsd">
+    <bpmn2:process id="notify_new_comments" name="Notify: New Comment" isExecutable="true" camunda:versionTag="0.9.0">
+      <bpmn2:startEvent id="Event_0i3cw7g" name="New comment created" camunda:modelerTemplate="org.drupal.event.content_entity:insert">
+        <bpmn2:extensionElements>
+          <camunda:properties>
+            <camunda:property name="pluginid" value="content_entity:insert" />
+          </camunda:properties>
+          <camunda:field name="type">
+            <camunda:string>comment _all</camunda:string>
+          </camunda:field>
+        </bpmn2:extensionElements>
+        <bpmn2:outgoing>Flow_05eq8fi</bpmn2:outgoing>
+      </bpmn2:startEvent>
+      <bpmn2:task id="Activity_1l3vura" name="Send email" camunda:modelerTemplate="org.drupal.action.action_send_email_action">
+        <bpmn2:extensionElements>
+          <camunda:properties>
+            <camunda:property name="pluginid" value="action_send_email_action" />
+          </camunda:properties>
+          <camunda:field name="recipient">
+            <camunda:string>[site:mail]</camunda:string>
+          </camunda:field>
+          <camunda:field name="subject">
+            <camunda:string>New comment: [entity:entity:title]</camunda:string>
+          </camunda:field>
+          <camunda:field name="message">
+            <camunda:string>A new comment was posted to "[entity:entity:title]":
+
+  - Title: [entity:title]
+  - Author: [entity:author:name] from [entity:author:mail]
+
+  Review: [entity:entity:url]</camunda:string>
+          </camunda:field>
+          <camunda:field name="replace_tokens">
+            <camunda:string>yes</camunda:string>
+          </camunda:field>
+        </bpmn2:extensionElements>
+        <bpmn2:incoming>Flow_05eq8fi</bpmn2:incoming>
+      </bpmn2:task>
+      <bpmn2:sequenceFlow id="Flow_05eq8fi" sourceRef="Event_0i3cw7g" targetRef="Activity_1l3vura" />
+    </bpmn2:process>
+    <bpmndi:BPMNDiagram id="sid-e6ef82a3-6f25-4aa2-a9f6-4be0a9910d33">
+      <bpmndi:BPMNPlane id="sid-b7f27226-5b04-4e8c-85b3-efec2215a140" bpmnElement="notify_new_comments">
+        <bpmndi:BPMNShape id="Event_0i3cw7g_di" bpmnElement="Event_0i3cw7g">
+          <dc:Bounds x="242" y="102" width="36" height="36" />
+          <bpmndi:BPMNLabel>
+            <dc:Bounds x="224" y="145" width="74" height="27" />
+          </bpmndi:BPMNLabel>
+        </bpmndi:BPMNShape>
+        <bpmndi:BPMNShape id="Activity_1l3vura_di" bpmnElement="Activity_1l3vura">
+          <dc:Bounds x="330" y="80" width="100" height="80" />
+          <bpmndi:BPMNLabel />
+        </bpmndi:BPMNShape>
+        <bpmndi:BPMNEdge id="Flow_05eq8fi_di" bpmnElement="Flow_05eq8fi">
+          <di:waypoint x="278" y="120" />
+          <di:waypoint x="330" y="120" />
+        </bpmndi:BPMNEdge>
+      </bpmndi:BPMNPlane>
+    </bpmndi:BPMNDiagram>
+  </bpmn2:definitions>

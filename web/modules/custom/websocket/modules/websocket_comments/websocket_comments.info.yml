@@ -1,0 +1,7 @@
+name: 'Websocket comments'
+type: module
+description: 'Real-time Drupal comments over Websockets'
+core_version_requirement: ^8 || ^9 || ^10
+package: 'Websocket'
+dependencies:
+  - websocket:websocket
