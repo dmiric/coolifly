@@ -1,4 +1,4 @@
-/node_modules/
+node_modules
 /files/
 # /data/ add this later for now we can commit db dump to repo
 # add /vendor/ once we get patches going
