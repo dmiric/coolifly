@@ -1,0 +1,5 @@
+ssh_keygen:
+  js:
+    js/ssh-keygen.js: {}
+  dependencies:
+    - core/drupal

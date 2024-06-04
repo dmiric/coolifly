@@ -1,0 +1,7 @@
+services:
+  websocket_log.log:
+    class: Drupal\websocket_log\Log
+  websocket_log.feed:
+    class: Drupal\websocket_log\Feed
+    arguments: ['@current_user']
+

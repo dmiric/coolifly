@@ -1,0 +1,5 @@
+name: 'SSH keygen'
+type: module
+description: 'Generate SSGkeys and populate fields.'
+package: Coolify
+core_version_requirement: ^10 || ^11

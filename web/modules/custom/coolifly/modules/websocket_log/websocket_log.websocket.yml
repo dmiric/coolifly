@@ -1,0 +1,5 @@
+# Websocket service plugin definitions.
+log:
+  class: Drupal\websocket_log\Log
+  label: 'Websocket log'
+  enabled: true

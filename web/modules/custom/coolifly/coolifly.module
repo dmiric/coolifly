@@ -1,0 +1,15 @@
+<?php
+
+/**
+ * @file
+ * Contains coolifly.module.
+ */
+
+/**
+ * Implements hook_page_attachments().
+ */
+function coolifly_page_attachments_alter(array &$attachments) {
+  $attachments['#attached']['library'][] = 'coolifly/coolifly-xterm';
+  $attachments['#attached']['library'][] = 'coolifly/coolifly-socket.io';
+  $attachments['#attached']['library'][] = 'coolifly/coolifly-terminal';
+}

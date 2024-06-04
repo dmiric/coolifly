@@ -1,0 +1,24 @@
+coolifly-xterm:
+  remote: https://github.com/xtermjs/xterm.js
+  version: 5.5
+  license:
+    name: MIT
+    url: https://github.com/angular/angular.js/blob/master/LICENSE
+    gpl-compatible: true
+  js:
+    https://cdn.jsdelivr.net/npm/xterm/lib/xterm.js: { type: external, minified: true }
+  css:
+    theme:
+      https://cdn.jsdelivr.net/npm/xterm/css/xterm.css: { type: external, minified: true }
+coolifly-terminal:
+  js:
+    js/terminal.js: {}
+coolifly-socket.io:
+  remote: https://github.com/socketio/socket.io-client
+  version: 4.7.5
+  license:
+    name: MIT
+    url: https://github.com/angular/angular.js/blob/master/LICENSE
+    gpl-compatible: true
+  js:
+    https://cdnjs.cloudflare.com/ajax/libs/socket.io/4.7.5/socket.io.min.js: { type: external, minified: true }

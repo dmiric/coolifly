@@ -1,0 +1,5 @@
+websocket-log:
+  js:
+    js/log.js: {}
+  dependencies:
+    - websocket/core

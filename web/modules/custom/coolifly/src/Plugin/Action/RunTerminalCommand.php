@@ -9,6 +9,7 @@ use Drupal\Core\Action\ConfigurableActionBase;
 use Drupal\Core\Entity\ContentEntityInterface;
 use Drupal\Core\Form\FormStateInterface;
 use Drupal\Core\Session\AccountInterface;
+use Symfony\Component\Process\Process;
 
 /**
  * Provides a Run Terminal Command action.
@@ -40,17 +41,17 @@ final class RunTerminalCommand extends ConfigurableActionBase {
    * {@inheritdoc}
    */
   public function defaultConfiguration(): array {
-    return ['example' => 'ls'];
+    return ['command-params' => 'ls'];
   }
 
   /**
    * {@inheritdoc}
    */
   public function buildConfigurationForm(array $form, FormStateInterface $form_state): array {
-    $form['example'] = [
+    $form['command-params'] = [
       '#type' => 'textfield',
-      '#title' => $this->t('Example'),
-      '#default_value' => $this->configuration['example'],
+      '#title' => $this->t('Command Params'),
+      '#default_value' => $this->configuration['command-params'],
     ];
     return $form;
   }
@@ -59,7 +60,7 @@ final class RunTerminalCommand extends ConfigurableActionBase {
    * {@inheritdoc}
    */
   public function submitConfigurationForm(array &$form, FormStateInterface $form_state): void {
-    $this->configuration['example'] = $form_state->getValue('example');
+    $this->configuration['command-params'] = $form_state->getValue('command-params');
   }
 
   /**
@@ -77,9 +78,45 @@ final class RunTerminalCommand extends ConfigurableActionBase {
    */
   public function execute(ContentEntityInterface $entity = NULL): void {
     dpm($this->defaultConfiguration());
+    $command = ['ls', '-lsa'];
+    $command = ['composer', 'update', TRUE];
+    // $result = shell_exec($this->configuration['example']);
+    // dpm($result);
+    $process = new Process($command);
+    \Drupal::service('websocket_log.feed')->send('> ' . $command[0] . ' ' . $command[1] . '\n');
 
-    $result = shell_exec($this->configuration['example']);
-    dpm($result);
+    if (!$command[2]) {
+      $process->start();
+
+      foreach ($process as $type => $data) {
+        if ($process::OUT === $type) {
+          // Echo "\nRead from stdout: " . $data;
+          // $process::ERR === $type.
+          $data_lines = explode(PHP_EOL, $data);
+          // $data_new = '';
+          foreach ($data_lines as $line) {
+            // $data_new = $data_new . ' ' . trim($line);
+            \Drupal::service('websocket_log.feed')->send(trim($line) . '\n');
+          }
+          // \Drupal::service('websocket_log.feed')->send($data_new);
+        }
+        else {
+          // Echo "\nRead from stderr: " . $data;.
+          dpm($data);
+        }
+      }
+
+      return;
+    }
+
+    $process->run(function ($type, $buffer): void {
+      if (Process::ERR === $type) {
+        \Drupal::service('websocket_log.feed')->send(trim($buffer));
+      }
+      else {
+        \Drupal::service('websocket_log.feed')->send(trim($buffer));
+      }
+    });
 
   }
 

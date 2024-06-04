@@ -7,7 +7,11 @@ $baseDir = dirname($vendorDir);
 
 return array(
     'org\\bovigo\\vfs\\' => array($vendorDir . '/mikey179/vfsstream/src/main/php'),
+    'Zeichen32\\GitLabApiBundle' => array($vendorDir . '/zeichen32/gitlabapibundle'),
     'WebDriver' => array($vendorDir . '/instaclick/php-webdriver/lib'),
+    'PhpCollection' => array($vendorDir . '/phpcollection/phpcollection/src'),
+    'GitElephant' => array($vendorDir . '/cypresslab/gitelephant/src'),
     'Console' => array($vendorDir . '/pear/console_getopt'),
     'Archive_Tar' => array($vendorDir . '/pear/archive_tar'),
+    'AFM' => array($vendorDir . '/albertofem/rsync-lib/src'),
 );

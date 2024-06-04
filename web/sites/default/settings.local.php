@@ -30,8 +30,10 @@
  *
  * @see https://wiki.php.net/rfc/expectations
  */
-assert_options(ASSERT_ACTIVE, TRUE);
-\Drupal\Component\Assertion\Handle::register();
+ini_set('zend.assertions', 1);
+
+// assert_options(ASSERT_ACTIVE, TRUE);
+// \Drupal\Component\Assertion\Handle::register();
 
 /**
  * Enable local development services.
@@ -144,10 +146,5 @@ $settings['mailer_sendmail_commands'] = [
 
 // Make unused dev files temporary to auto-delete them:
 $config['file.settings']['make_unused_managed_files_temporary'] = TRUE;
-
-// Reduce kint max_depth to prevent out-of-memory.
-if (class_exists('Kint')) {
-  \Kint::$depth_limit = 5;
-}
 
 // ############################# #webksde END #############################

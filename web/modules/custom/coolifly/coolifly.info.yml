@@ -1,5 +1,5 @@
 name: 'Coolifly'
 type: module
 description: 'Coolifly just on Drupal'
-package: Custom
+package: Coolifly
 core_version_requirement: ^10 || ^11

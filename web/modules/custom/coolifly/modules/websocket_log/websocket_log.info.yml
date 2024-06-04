@@ -1,0 +1,7 @@
+name: 'Websocket Log'
+type: module
+description: 'Real-time Log over Websocket'
+core_version_requirement: ^8 || ^9 || ^10
+package: 'Coolifly'
+dependencies:
+  - websocket:websocket

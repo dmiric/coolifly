@@ -283,6 +283,7 @@ $databases = [];
  * @endcode
  */
 $settings['hash_salt'] = 'nM1gJVSJRiBLbL6PiQwSkXCU14RFvAnHG9lCzrQ33JoJyG8UVvhy3U-J199wufHVhMDb7pDPag';
+putenv("FLY_USER_1=a9ujSARQDTovS2zPee40MAJkGx79b6I9NR5f3f1qFM4KzgrBzIN2wNRSIWZQIAdfVyE7Tp4OMH8Lu8lf4Y202pj9mbre60Xt20ylIQbAsk6QBQFq7mPqn9F57A7G1pc4");
 
 /**
  * Deployment identifier.
